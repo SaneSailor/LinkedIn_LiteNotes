@@ -1,0 +1,2 @@
+- name: Armory Continuous Deployment-as-a-Service
+  uses: armory/cli-deploy-action@v1.0.0
