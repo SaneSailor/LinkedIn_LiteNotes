@@ -1,0 +1,7 @@
+.github
+--workflows
+---cdaas-deploy-workflow.yaml
+deployments
+--canary.yaml
+--manifests
+---sample-litenotes-app.yaml
