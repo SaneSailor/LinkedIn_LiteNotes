@@ -25,7 +25,10 @@ targets: # Map of your deployment target, Armory CD-as-a-Service supports deploy
             dependsOn: []
 # The list of manifest sources. Can be a directory or file.
 manifests:
-    - path: /.github/workflows # Read all yaml|yml files in the directory and deploy all the manifests found.
+    # - path: /.github/workflows # Read all yaml|yml files in the directory and deploy all the manifests found.
+    #   targets:
+    #     - dev-west
+    - path: deployments/manifests/sample-litenotes-app.yaml # Deploy this specific manifest.
       targets:
         - dev-west
 strategies: # A map of named strategies that can be assigned to deployment targets in the targets block.
