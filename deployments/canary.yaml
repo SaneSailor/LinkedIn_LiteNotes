@@ -28,9 +28,6 @@ manifests:
     - path: /.github/workflows # Read all yaml|yml files in the directory and deploy all the manifests found.
       targets:
         - dev-west
-    - path: /deployments/manifests/sample-litenotes-app.yaml # Deploy this specific manifest.
-      targets:
-        - dev-west
 strategies: # A map of named strategies that can be assigned to deployment targets in the targets block.
     strategy1: # Name for a strategy that you use to refer to it. Used in the target block. This example uses strategy1 as the name.
         canary: # The deployment strategy type. Use canary.
