@@ -27,7 +27,7 @@ jobs:
         with:
           clientId: "44zpqYsTZrsJo6HpiFdEalhPmS2G1HAO"
           clientSecret: "P0SWvs8jz7qFrWCAIC7ANMfVASnj0BmT74zph4hcXzrw8gm6dcAqgascBfE_D8zP"
-          path-to-file: "/../deployments/manifests/deployment.yaml"
+          path-to-file: "/deployments/manifests/deployment.yaml"
           waitForDeployment: true
 
       - name: Print deploy output
