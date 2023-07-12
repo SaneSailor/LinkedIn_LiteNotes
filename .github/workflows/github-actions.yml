@@ -2,17 +2,9 @@ name: LiteNotes Actions
 run-name: ${{ github.actor }} is using GitHub Actions 🚀
 on: [push]
 jobs:
-  LiteNotes-GitHub-Actions:
+  LiteNotes-Actions:
     runs-on: ubuntu-latest
-    # services:
-    #   mysql:
-    #     image: mysql:5.7
-    #     env:
-    #       MYSQL_ROOT_PASSWORD: password
-    #       MYSQL_DATABASE: test
-    #     ports:
-    #       - 33306:3306
-    #     options: --health-cmd="mysqladmin ping" --health-intervals=10s --health-timeout=5s --health-retries=3
+  
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -22,41 +14,18 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Get yarn cache
-        id: yarn-cache
-        run: 
-          echo "::set-output name=dir::$(yarn cache dir)"
-      
-      - uses: actions/cache@v1
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-    
-      - name: Install composer dependencies
-        run: |
-          composer install --no-scripts
-    
-      - name: Prepare Laravel Application
-        run: |
-          cp .env.ci .env
-          php artisan key:generate
-      
-      - name: Run LiteNotes App
-        run: vendor/bin/sail up/ -d
-    
-      - name: Install front-end dependencies
-        run: |
-          npm install
-          npm run dev    
-
-      - name: Run Testsuite
-        run: vendor/bin/phpunit tests/
-    
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+      - name: Armory CD-as-a-Service Deployment
+        id: deploy
+        uses: armory/cli-deploy-action@main
+        with:
+          clientId: "44zpqYsTZrsJo6HpiFdEalhPmS2G1HAO"
+          clientSecret:  "P0SWvs8jz7qFrWCAIC7ANMfVASnj0BmT74zph4hcXzrw8gm6dcAqgascBfE_D8zP"
+            path-to-file: deployments/canary.yaml
+            waitForDeployment: true
