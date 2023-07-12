@@ -25,7 +25,7 @@ jobs:
         id: deploy
         uses: armory/cli-deploy-action@main
         with:
-          clientId: "44zpqYsTZrsJo6HpiFdEalhPmS2G1HAO"
-          clientSecret:  "P0SWvs8jz7qFrWCAIC7ANMfVASnj0BmT74zph4hcXzrw8gm6dcAqgascBfE_D8zP"
-            path-to-file: deployments/canary.yaml
-            waitForDeployment: true
+          clientId: ${{ secrets.CDAAS_CLIENT_ID }}
+          clientSecret: ${{ secrets.CDAAS_CLIENT_SECRET }}
+          path-to-file: deployments/canary.yaml
+          waitForDeployment: true
