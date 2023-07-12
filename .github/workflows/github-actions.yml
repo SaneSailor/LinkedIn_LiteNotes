@@ -25,7 +25,11 @@ jobs:
         id: deploy
         uses: armory/cli-deploy-action@main
         with:
-          clientId: 44zpqYsTZrsJo6HpiFdEalhPmS2G1HAO
-          clientSecret: P0SWvs8jz7qFrWCAIC7ANMfVASnj0BmT74zph4hcXzrw8gm6dcAqgascBfE_D8zP
-          path-to-file: ../deployments/canary.yaml
+          clientId: "44zpqYsTZrsJo6HpiFdEalhPmS2G1HAO"
+          clientSecret: "P0SWvs8jz7qFrWCAIC7ANMfVASnj0BmT74zph4hcXzrw8gm6dcAqgascBfE_D8zP"
+          path-to-file: "/deployments/deployment.yaml"
           waitForDeployment: true
+
+      - name: Print deploy output
+        id: output
+        run: echo -e 'DeploymentID ${{steps.deploy.outputs.DEPLOYMENT_ID}}\nLink ${{steps.deploy.outputs.LINK}}\n${{steps.deploy.outputs.RUN_RESULT}}'

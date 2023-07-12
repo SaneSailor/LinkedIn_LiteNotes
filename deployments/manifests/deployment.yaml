@@ -1,0 +1,7 @@
+roles:
+  - name: Deployer
+    tenant: main
+    grants:
+      - type: api
+        resource: deployment
+        permission: full
