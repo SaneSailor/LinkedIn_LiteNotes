@@ -1,9 +1,12 @@
 name: LiteNotes Actions
-run-name: ${{ github.actor }} is using GitHub Actions 🚀
+run-name: ${{ github.repository }} is in Action 🚀
 on: [push]
 jobs:
   LiteNotes-Actions:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./app/ 
   
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -25,9 +28,9 @@ jobs:
         id: deploy
         uses: armory/cli-deploy-action@main
         with:
-          clientId: "44zpqYsTZrsJo6HpiFdEalhPmS2G1HAO"
-          clientSecret: "P0SWvs8jz7qFrWCAIC7ANMfVASnj0BmT74zph4hcXzrw8gm6dcAqgascBfE_D8zP"
-          path-to-file: "/manifests/deployment.yaml"
+          clientId: ${{ secrets.CDAAS_CLIENT_ID }}
+          clientSecret: ${{ secrets.CDAAS_CLIENT_SECRET }}
+          path-to-file: "../deployments/deployment.yaml"
           waitForDeployment: true
 
       - name: Print deploy output
