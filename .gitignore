@@ -17,6 +17,3 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-wp-content/cache
-wp-content/upgrade
-wp-content/uploads
