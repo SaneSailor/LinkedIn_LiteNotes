@@ -8,7 +8,7 @@ jobs:
  
     services:
       mysql:
-        image: mysql:4.0
+        image: mysql:stable
         env:
           MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: test

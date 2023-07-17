@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-400 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800  leading-tight">
             {{ !$note->trashed() ? __('Notes') : _('Trash') }}
         </h2>
     </x-slot>
@@ -13,10 +13,10 @@
             </x-alert-success>
             <div class="flex">
                 @if(!$note->trashed())
-                    <p class="opacity-70 text-white">
+                    <p class="opacity-70 text-dark">
                         <strong>Created:</strong> {{ $note->created_at->diffForHumans() }}
                     </p>
-                    <p class="opacity-70 ml-3 text-white" >
+                    <p class="opacity-70 ml-3 text-dark" >
                         <strong>Updated:</strong> {{ $note->updated_at->diffForHumans() }}
 
                     </p>
@@ -28,7 +28,7 @@
                     </form>
                 @else
                     
-                <p class="opacity-70 text-white">
+                <p class="opacity-70 text-dark">
                     <strong>Deleted:</strong> {{ $note->deleted_at->diffForHumans() }}
                 </p>
                 
