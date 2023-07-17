@@ -12,6 +12,7 @@ class Note extends Model
     use SoftDeletes;
 
     protected $guarded = [];
+    
 
     public function getRouteKeyName() 
     {
